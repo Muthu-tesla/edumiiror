@@ -1,5 +1,5 @@
 // ── GPT-4o API helper ────────────────────────────────────────────────────────
-const OPENAI_API_KEY = "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";
+const OPENAI_API_KEY = "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";
 const OPENAI_API_URL = "https://openrouter.ai/api/v1/chat/completions";
 
 export const callGPT4o = async (systemPromptOrMessages, userPrompt) => {
