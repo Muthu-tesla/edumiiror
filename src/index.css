@@ -1,0 +1,168 @@
+
+:root {
+  --navy: #0D1B4B;
+  --teal: #0D9488;
+  --teal-light: #14B8A6;
+  --white: #FFFFFF;
+  --bg: #F8FAFC;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 3px; }
+
+/* ---- Animations ---- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes countUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+@keyframes gradientFlow {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes spin360 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-fadeIn    { animation: fadeIn 0.4s ease both; }
+.animate-slideUp   { animation: slideUp 0.5s ease both; }
+.animate-float     { animation: float 3s ease-in-out infinite; }
+.animate-countUp   { animation: countUp 0.6s ease both; }
+.animate-gradient  {
+  background-size: 200% 200%;
+  animation: gradientFlow 4s ease infinite;
+}
+.animate-spin-slow { animation: spin360 2s linear infinite; }
+.animate-blink     { animation: blink 1s step-start infinite; }
+
+/* ---- Skeleton ---- */
+.skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* ---- Cards ---- */
+.card-glow:hover {
+  box-shadow: 0 0 0 2px var(--teal-light), 0 20px 40px rgba(13,148,136,0.15);
+}
+
+/* ---- Gradient backgrounds ---- */
+.bg-navy-gradient {
+  background: linear-gradient(135deg, #0D1B4B 0%, #0f2563 50%, #0D1B4B 100%);
+}
+.bg-teal-gradient {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+}
+
+/* ---- Tab-lock warning ---- */
+.warning-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9999;
+  background: var(--danger);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: 700;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ---- Toast ---- */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ---- Chat bubble ---- */
+.chat-bubble-ai {
+  background: linear-gradient(135deg, #0D9488, #14B8A6);
+  color: white;
+  border-radius: 18px 18px 18px 4px;
+  padding: 12px 16px;
+  max-width: 85%;
+}
+.chat-bubble-user {
+  background: #0D1B4B;
+  color: white;
+  border-radius: 18px 18px 4px 18px;
+  padding: 12px 16px;
+  max-width: 85%;
+  align-self: flex-end;
+}
+
+/* ---- Test palette ---- */
+.palette-btn { width: 32px; height: 32px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.palette-btn:hover { transform: scale(1.1); }
+
+/* ---- Pulse badge ---- */
+.pulse-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+
+/* ---- Responsive sidebar ---- */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .bottom-nav { display: flex; }
+}
+@media (min-width: 769px) {
+  .bottom-nav { display: none; }
+}
